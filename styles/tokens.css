@@ -1,0 +1,166 @@
+/* =====================================================================
+   tokens.css  —  강팀 단일 디자인 진입점
+   활성 스타일: #1 — Crowny Class (보라 #8A38F5 → 분홍 #D53A6B)
+
+   ⚠️ 이 파일만 수정해도 전 페이지에 반영됨.
+      모든 페이지는 var(--...) 로만 색·간격·폰트·radius 를 참조하고,
+      임의 HEX / 임의 px / 임의 폰트를 페이지에 직접 박지 않는다.
+
+   진본 명세 : .claude/knowledge/ui-designer/styles/01-crowny-class.md
+   활성 포인터: .claude/knowledge/ui-designer/styles/active.txt  (= 1)
+   요약 문서  : .claude/knowledge/ui-designer/design-system.md
+   ===================================================================== */
+
+/* ── 폰트 @import (Pretendard Variable 본문 / Agbalumo 로고 한정) ── */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+:root {
+  /* ===== 브랜드 ===== */
+  --primary:        #8A38F5;   /* 메인 보라 · CTA · 링크 · 활성 */
+  --primary-dark:   #7030D4;   /* 호버 · 눌림 */
+  --primary-light:  #A855F7;   /* 보조 강조 · 배지 */
+  --primary-rgb:    138, 56, 245;
+  --secondary:      #D53A6B;   /* 분홍 · 그라데이션 끝 */
+  --secondary-light:#F472B6;   /* 부드러운 분홍 강조 */
+  --secondary-rgb:  213, 58, 107;
+  --gradient:       linear-gradient(135deg, #8A38F5 0%, #D53A6B 100%);
+
+  /* ===== 다크 영역 (사이드바 · 네비) ===== */
+  --dark-bg:        #1B1D21;
+  --dark-secondary: #1A1C22;
+  --dark-tertiary:  #2B2D35;   /* 다크 위 호버 */
+  --dark-border:    #3D3D54;
+
+  /* ===== 라이트 영역 (콘텐츠) ===== */
+  --light-bg:       #F3F4F6;   /* 페이지 배경 */
+  --light-card:     #FFFFFF;   /* 카드 · 모달 · 시트 */
+  --light-border:   #E5E7EB;   /* 테두리 · 구분선 */
+  --light-hover:    #F9FAFB;   /* 라이트 위 호버 */
+
+  /* ===== 텍스트 ===== */
+  --text-primary:   #FFFFFF;   /* 다크 배경 위 */
+  --text-dark:      #1F2937;   /* 라이트 배경 위 본문 */
+  --text-secondary: #9CA3AF;   /* 다크 위 보조 */
+  --text-muted:     #6B7280;   /* 라이트 위 약함 · 캡션 · 메타 */
+
+  /* ===== 상태 (Semantic) — 항상 메인 + light 한 쌍 ===== */
+  --success:        #22C55E;  --success-light: #DCFCE7;
+  --warning:        #F59E0B;  --warning-light: #FEF3C7;
+  --error:          #EF4444;  --error-light:   #FEE2E2;
+  --info:           #3B82F6;  --info-light:    #DBEAFE;
+
+  /* ===== 모서리 (Border Radius) ===== */
+  --radius-sm:   6px;     /* 작은 인풋 · 태그 · 뱃지 */
+  --radius-md:   10px;    /* 버튼 · 인풋 기본 */
+  --radius-lg:   12px;    /* 카드 내부 요소 · 메뉴 항목 */
+  --radius-xl:   16px;    /* 카드 · 모달 기본 */
+  --radius-2xl:  20px;    /* 큰 카드 · 히어로 */
+  --radius-full: 9999px;  /* 아바타 · 원형 뱃지 · 필 칩 */
+
+  /* ===== 그림자 (Shadow) ===== */
+  --shadow-sm:      0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:      0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg:      0 10px 15px rgba(0, 0, 0, 0.10);
+  --shadow-xl:      0 20px 25px rgba(0, 0, 0, 0.15);
+  --shadow-primary: 0 4px 14px rgba(138, 56, 245, 0.35);
+
+  /* ===== 간격 (Spacing · 8px 그리드) ===== */
+  --spacing-xs: 4px;   /* 인라인 요소 사이 */
+  --spacing-sm: 8px;   /* 작은 요소 묶음 */
+  --spacing-md: 16px;  /* 카드 내부 패딩 · 블록 간격 */
+  --spacing-lg: 24px;  /* 섹션 간격 · 카드 사이 */
+  --spacing-xl: 32px;  /* 페이지 큰 섹션 */
+
+  /* ===== 폰트 패밀리 ===== */
+  --font-family-base:    'Pretendard Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Agbalumo', cursive;  /* 로고 · 장식 텍스트 한정 */
+
+  /* ===== 폰트 크기 (최소 16px — 더 내리지 않음) ===== */
+  --font-xs:  16px;  /* 캡션 · 뱃지 · 아주 작은 라벨 (최소) */
+  --font-sm:  16px;  /* 보조 텍스트 · 작은 버튼 */
+  --font-md:  16px;  /* 본문 · 일반 버튼 (기본) */
+  --font-lg:  18px;  /* 사이드바 메뉴 · 강조 본문 */
+  --font-xl:  20px;  /* 카드 제목 · 작은 헤딩 */
+  --font-2xl: 26px;  /* 섹션 제목 · H2 */
+  --font-3xl: 32px;  /* 페이지 H1 */
+
+  /* ===== 폰트 굵기 ===== */
+  --font-weight-normal:   400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-extra:    800;  /* 마케팅 헤딩 한정 */
+
+  /* ===== 줄간격 ===== */
+  --line-height-body:    1.6;
+  --line-height-heading: 1.3;
+  --line-height-label:   1.4;
+
+  /* ===== 보더 ===== */
+  --border-color: #E5E7EB;
+  --border:       1px solid #E5E7EB;
+
+  /* ===== 트랜지션 ===== */
+  --transition-fast:   0.15s ease;  /* 호버 · 작은 상호작용 */
+  --transition-normal: 0.2s ease;   /* 버튼 · 카드 변화 (기본) */
+  --transition-slow:   0.3s ease;   /* 모달 등장 · 큰 레이아웃 변화 */
+
+  /* ===== 레이아웃 ===== */
+  --sidebar-width:     260px;
+  --header-height:     64px;
+  --content-max-width: 1280px;
+  --modal-width:       520px;
+
+  /* ===== 파생 공통 간격 (위 토큰 조합) ===== */
+  --section-gap:       var(--spacing-xl);  /* 32px */
+  --section-padding-y: var(--spacing-xl);
+  --section-padding-x: var(--spacing-lg);  /* 24px */
+  --content-gap:       var(--spacing-md);  /* 16px */
+  --content-padding:   var(--spacing-md);
+  --card-padding:      var(--spacing-md);  /* 16~20px */
+}
+
+/* ── 기본 리셋 (순수 CSS) ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-md);
+  line-height: var(--line-height-body);
+  color: var(--text-dark);
+  background: var(--light-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
